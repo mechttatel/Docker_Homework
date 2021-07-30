@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 5
+      author: Ivan
+      changes:
+        - loadData:
+            columns:
+              - column:
+                  header: unit
+                  name: unit
+                  type: STRING
+              - column:
+                  header: value
+                  name: value
+                  type: NUMERIC
+              - column:
+                  header: ingredient_id
+                  name: ingredient_id
+                  type: NUMERIC
+            commentLineStartsWith: '#'
+            encoding: UTF-8
+            file: compositions.csv
+            #quotchar: '"'
+            separator: ','
+            relativeToChangelogFile: true
+            tableName: compositions

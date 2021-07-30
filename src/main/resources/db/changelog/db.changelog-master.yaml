@@ -1,0 +1,9 @@
+databaseChangeLog:
+#  - includeAll:
+#      path: db/changelog/drop/
+  - includeAll:
+      path: db/changelog/table-1.0/
+  - includeAll:
+      path: db/changelog/data-1.0/
+  - includeAll:
+      path: db/changelog/table-auth/

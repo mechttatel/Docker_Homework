@@ -1,0 +1,181 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: Ivan
+      changes:
+        - createTable:
+            tableName: cocktails
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: alcohol
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: comment
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: photo_url
+                  type: varchar(255)
+        - createTable:
+            tableName: ingredients
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: compositions
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: unit
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: value
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ingredient_id
+                  type: INT
+        - addForeignKeyConstraint:
+            baseTableName: compositions
+            baseColumnNames: ingredient_id
+            referencedTableName: ingredients
+            referencedColumnNames: id
+            constraintName: composition_ingredient_fk
+            onDelete: CASCADE
+            onUpdate: CASCADE
+        - createTable:
+            tableName: ricepts
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: order_ricept
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: cocktail_id
+                  type: INT
+        - addForeignKeyConstraint:
+            baseTableName: ricepts
+            baseColumnNames: cocktail_id
+            referencedTableName: cocktails
+            referencedColumnNames: id
+            constraintName: ricepts_cocktail_fk
+            onDelete: CASCADE
+            onUpdate: CASCADE
+        - createTable:
+            tableName: tags
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: cocktail_ingredient
+            columns:
+              - column:
+                  name: cocktail_id
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ingredient_id
+                  type: INT
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: cocktail_ingredient
+            baseColumnNames: cocktail_id
+            referencedTableName: cocktails
+            referencedColumnNames: id
+            constraintName: cocktail_ingredient_cocktail_id_fk
+            onDelete: CASCADE
+            onUpdate: CASCADE
+        - addForeignKeyConstraint:
+            baseTableName: cocktail_ingredient
+            baseColumnNames: ingredient_id
+            referencedTableName: ingredients
+            referencedColumnNames: id
+            constraintName: cocktail_ingredient_ingredient_id_fk
+            onDelete: CASCADE
+            onUpdate: CASCADE
+        - createTable:
+            tableName: cocktail_tag
+            columns:
+              - column:
+                  name: cocktail_id
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tag_id
+                  type: INT
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: cocktail_tag
+            baseColumnNames: cocktail_id
+            referencedTableName: cocktails
+            referencedColumnNames: id
+            constraintName: cocktail_tag_cocktail_id_fk
+            onDelete: CASCADE
+            onUpdate: CASCADE
+        - addForeignKeyConstraint:
+            baseTableName: cocktail_tag
+            baseColumnNames: tag_id
+            referencedTableName: tags
+            referencedColumnNames: id
+            constraintName: cocktail_tag_tag_id_fk
+            onDelete: CASCADE
+            onUpdate: CASCADE

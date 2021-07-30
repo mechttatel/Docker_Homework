@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: Ivan
+      changes:
+        - loadData:
+            columns:
+              - column:
+                  header: alcohol
+                  name: alcohol
+                  type: NUMERIC
+              - column:
+                  header: comment
+                  name: comment
+                  type: STRING
+              - column:
+                  header: name
+                  name: name
+                  type: STRING
+              - column:
+                  header: photo_url
+                  name: photo_url
+                  type: STRING
+            commentLineStartsWith: '#'
+            encoding: UTF-8
+            file: cocktails.csv
+            #quotchar: '"'
+            separator: ','
+            relativeToChangelogFile: true
+            tableName: cocktails

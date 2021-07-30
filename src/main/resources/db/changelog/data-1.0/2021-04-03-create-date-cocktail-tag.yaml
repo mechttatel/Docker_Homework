@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: 9
+      author: Ivan
+      changes:
+        - loadData:
+            columns:
+              - column:
+                  header: cocktail_id
+                  name: cocktail_id
+                  type: NUMERIC
+              - column:
+                  header: tag_id
+                  name: tag_id
+                  type: NUMERIC
+            commentLineStartsWith: '#'
+            encoding: UTF-8
+            file: cocktail-tag.csv
+            #quotchar: '"'
+            separator: ','
+            relativeToChangelogFile: true
+            tableName: cocktail_tag

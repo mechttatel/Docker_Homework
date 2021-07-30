@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 6
+      author: Ivan
+      changes:
+        - loadData:
+            columns:
+              - column:
+                  header: description
+                  name: description
+                  type: STRING
+              - column:
+                  header: order_ricept
+                  name: order_ricept
+                  type: NUMERIC
+              - column:
+                  header: cocktail_id
+                  name: cocktail_id
+                  type: NUMERIC
+            commentLineStartsWith: '#'
+            encoding: UTF-8
+            file: ricepts.csv
+            #quotchar: '"'
+            separator: ','
+            relativeToChangelogFile: true
+            tableName: ricepts

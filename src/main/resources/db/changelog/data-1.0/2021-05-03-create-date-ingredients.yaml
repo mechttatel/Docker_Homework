@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: 4
+      author: Ivan
+      changes:
+        - loadData:
+            columns:
+              - column:
+                  header: name
+                  name: name
+                  type: STRING
+            commentLineStartsWith: '#'
+            encoding: UTF-8
+            file: ingredients.csv
+            #quotchar: '"'
+            separator: ','
+            relativeToChangelogFile: true
+            tableName: ingredients
