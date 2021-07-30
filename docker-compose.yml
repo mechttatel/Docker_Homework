@@ -1,0 +1,12 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  app:
+    image: javaapp
+    restart: always
+    ports:
+      - "8001:8001"
+    environment:
+      APP_PORT: 8001
+      LOGIN_POSTGRES: postgres
+      PASSWORD_POSTGRES: 123
+      DB_URL: jdbc:postgresql://host.docker.internal:5432/drink_db

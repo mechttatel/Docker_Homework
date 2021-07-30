@@ -4,10 +4,6 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-### Docker ###
-Dockerfile
-docker-compose.yaml
-
 ### STS ###
 .apt_generated
 .classpath
